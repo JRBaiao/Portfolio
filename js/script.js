@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initBackgroundCanvas();
   initMobileNav();
   initActiveNavLink();
   initScrollReveal();
@@ -60,10 +61,23 @@ function initActiveNavLink() {
   });
 }
 
-/* ---------- Scroll reveal animations ---------- */
+/* ---------- Scroll reveal animations (staggered per container) ---------- */
 function initScrollReveal() {
   const targets = document.querySelectorAll('.reveal');
   if (!targets.length) return;
+
+  const groups = new Map();
+  targets.forEach((el) => {
+    const parent = el.parentElement;
+    if (!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push(el);
+  });
+  groups.forEach((siblings) => {
+    siblings.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 60}ms`;
+    });
+  });
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -76,6 +90,54 @@ function initScrollReveal() {
     { threshold: 0.15 }
   );
   targets.forEach((el) => observer.observe(el));
+}
+
+/* ---------- Animated monochrome background (soft drifting glow, canvas 2D) ---------- */
+function initBackgroundCanvas() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, dpr;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const orbs = Array.from({ length: 4 }, (_, i) => ({
+    baseX: Math.random(),
+    baseY: Math.random(),
+    r: 260 + i * 60,
+    speed: 0.00025 + i * 0.00008,
+    offset: i * 120,
+  }));
+
+  function frame(t) {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    orbs.forEach((orb) => {
+      const angle = t * orb.speed + orb.offset;
+      const x = (orb.baseX * w) + Math.cos(angle) * w * 0.18;
+      const y = (orb.baseY * h) + Math.sin(angle * 0.8) * h * 0.18;
+      const gradient = ctx.createRadialGradient(x, y, 0, x, y, orb.r);
+      const color = isLight ? '10,10,10' : '255,255,255';
+      gradient.addColorStop(0, `rgba(${color}, 0.05)`);
+      gradient.addColorStop(1, `rgba(${color}, 0)`);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, w, h);
+    });
+    if (!reduceMotion) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  if (reduceMotion) frame(0);
 }
 
 /* ---------- Back to top ---------- */
