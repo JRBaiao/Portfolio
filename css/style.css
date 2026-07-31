@@ -651,6 +651,18 @@ input, textarea { font-family: inherit; }
   flex-shrink: 0;
 }
 .project-icon svg { width: 22px; height: 22px; }
+.project-link-btn {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text);
+  opacity: var(--normal-opacity);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.project-link-btn:hover { opacity: var(--hover-opacity); border-color: var(--border-hover); }
+.project-link-btn svg { width: 16px; height: 16px; }
 .project-card h3 { font-size: 1.15rem; }
 .project-card .tags { margin: 16px 0; }
 .project-desc { font-size: 0.94rem; flex-grow: 1; }
