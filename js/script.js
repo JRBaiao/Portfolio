@@ -3,7 +3,6 @@
 // ===========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
   initBackgroundCanvas();
   initMobileNav();
   initActiveNavLink();
@@ -16,24 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCopyEmail();
 });
-
-/* ---------- Theme toggle (persisted) ---------- */
-function initTheme() {
-  const root = document.documentElement;
-  const stored = localStorage.getItem('theme');
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  const initial = stored || (prefersLight ? 'light' : 'dark');
-  root.setAttribute('data-theme', initial);
-
-  const toggle = document.querySelector('.theme-toggle');
-  if (!toggle) return;
-  toggle.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
-}
 
 /* ---------- Mobile nav ---------- */
 function initMobileNav() {
@@ -120,7 +101,6 @@ function initBackgroundCanvas() {
   }));
 
   function frame(t) {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     ctx.clearRect(0, 0, w, h);
     ctx.globalCompositeOperation = 'lighter';
     orbs.forEach((orb) => {
@@ -128,9 +108,8 @@ function initBackgroundCanvas() {
       const x = (orb.baseX * w) + Math.cos(angle) * w * 0.18;
       const y = (orb.baseY * h) + Math.sin(angle * 0.8) * h * 0.18;
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, orb.r);
-      const color = isLight ? '10,10,10' : '255,255,255';
-      gradient.addColorStop(0, `rgba(${color}, 0.05)`);
-      gradient.addColorStop(1, `rgba(${color}, 0)`);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.05)');
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, w, h);
     });
@@ -167,7 +146,7 @@ function initTerminal() {
     { prompt: 'joao@portfolio', cmd: 'cat focus.txt' },
     { out: 'Blue team defense · Prompt security · Applied ML' },
     { prompt: 'joao@portfolio', cmd: 'ls certifications/' },
-    { out: 'CySA+  Security+  SecAI+  Network+  AWS-Sec' },
+    { out: 'CySA+  Security+  SecAI+  Network+  AZ-900  AB-900' },
     { prompt: 'joao@portfolio', cmd: './connect --location "Brussels, BE"' },
     { out: 'status: open to opportunities ✓' },
   ];
@@ -258,24 +237,32 @@ function initContactForm() {
     const subject = encodeURIComponent(`Portfolio contact from ${name || 'website visitor'}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:joaorafaelavancinibaiao4@gmail.com?subject=${subject}&body=${body}`;
+    showToast('Draft opened in your email app — review it and press send there. Nothing opened? Use the email address on this page.', 6000);
   });
+}
+
+/* ---------- Toast ---------- */
+function showToast(message, duration = 2200) {
+  const toast = document.querySelector('.toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), duration);
 }
 
 /* ---------- Copy email to clipboard ---------- */
 function initCopyEmail() {
   const btn = document.querySelector('.copy-email');
-  const toast = document.querySelector('.toast');
-  if (!btn || !toast) return;
+  if (!btn) return;
   btn.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = btn.dataset.email;
     try {
       await navigator.clipboard.writeText(email);
-      toast.textContent = 'Email copied to clipboard';
+      showToast('Email copied to clipboard');
     } catch {
-      toast.textContent = email;
+      showToast(email);
     }
-    toast.classList.add('is-visible');
-    setTimeout(() => toast.classList.remove('is-visible'), 2200);
   });
 }
