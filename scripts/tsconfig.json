@@ -1,0 +1,11 @@
+{
+  // Build scripts, run directly by Node (which strips the types).
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2024"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"]
+  },
+  "include": [".", "../src/data"]
+}

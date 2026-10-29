@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action mailto:; base-uri 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — João Baião</title>
 <meta name="description" content="AI security projects by João Rafael Avansini Baião.">
@@ -32,261 +33,258 @@
     <div class="breadcrumb"><a href="index.html">Home</a> / Projects</div>
     <div class="eyebrow">Selected work</div>
     <h1>Projects</h1>
-    <p>AI-powered tools spanning agent development, adversarial security research, and red-team training simulations.</p>
+    <p>AI security, applied research, and governance tools. Explore the builds, the evidence, and the thinking behind them.</p>
   </div>
 </header>
 
-<section class="section">
+<section class="section projects-section" aria-label="Project collection">
   <div class="container">
-    <div class="filter-bar reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="ai">AI</button>
-      <button class="filter-btn" data-filter="security">Security</button>
-      <button class="filter-btn" data-filter="automation">Automation</button>
-      <button class="filter-btn" data-filter="vision">Computer Vision</button>
-      <button class="filter-btn" data-filter="data">Data</button>
-      <button class="filter-btn" data-filter="app">App</button>
-    </div>
-
-    <div class="project-grid">
-      <article class="project-card reveal" data-tags="ai automation">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+    <div class="project-collection-toolbar"><div class="filter-bar" role="group" aria-label="Filter projects by category">
+      <!-- build:filters -->
+      <button class="filter-btn active" data-filter="all" type="button" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="ai" type="button" aria-pressed="false">AI</button>
+      <button class="filter-btn" data-filter="security" type="button" aria-pressed="false">Security</button>
+      <button class="filter-btn" data-filter="automation" type="button" aria-pressed="false">Automation</button>
+      <button class="filter-btn" data-filter="vision" type="button" aria-pressed="false">Computer Vision</button>
+      <button class="filter-btn" data-filter="data" type="button" aria-pressed="false">Data</button>
+      <button class="filter-btn" data-filter="app" type="button" aria-pressed="false">App</button>
+      <!-- /build:filters -->
+    </div><p class="project-count" aria-live="polite" aria-atomic="true"><!-- build:count -->11<!-- /build:count --> projects</p></div>
+    <div class="project-group" data-project-group>
+      <div class="work-section-head"><h2>Featured projects</h2><span>Selected builds / 01–03</span></div>
+      <div class="featured-grid">
+        <article class="project-card featured-project featured-project--lead reveal" id="phishing-agent" data-tags="ai security">
+          <div class="featured-body">
+            <div class="project-identity"><span class="project-icon project-icon--cyan" aria-hidden="true"><img src="assets/projects/icons/phishing.png" width="28" height="28" alt=""></span><div class="project-kicker"><span>01 / AI &amp; Blue-Team Security</span><span class="project-badge">Featured</span></div></div>
+            <h3>Phishing Investigation Agent</h3>
+            <p class="project-desc">From suspicious email to an evidence-backed investigation. Deterministic scoring, a local LLM analyst, and a verifier that checks the model’s claims.</p>
+            <dl class="project-results"><div><dt>Precision</dt><dd data-count-up>97.7<span>%</span></dd></div><div><dt>Recall</dt><dd data-count-up>59.5<span>%</span></dd></div></dl>
+            <p class="results-note">Held-out test results · phishing classification</p>
+            <div class="tags">
+          <span class="tag">Phishing Triage</span>
+          <span class="tag">Ollama</span>
+          <span class="tag">MITRE ATT&amp;CK</span>
+        </div>
+            <div class="project-actions"><a class="project-code-link" href="https://github.com/JRBaiao/Phishing-Investigation-Agent" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a><button class="project-toggle" type="button" aria-expanded="false" aria-controls="phishing-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="phishing-detail">
+          <p>Parses .eml files safely (no URL is ever visited and attachments are only hashed in memory), extracts IOCs, and computes an explainable triage score from SPF/DKIM/DMARC, URL, attachment and language findings. A local Ollama model turns that evidence into a schema-validated report mapped to MITRE ATT&amp;CK T1566, with email content treated as untrusted to resist prompt injection. Evaluated on 4,286 real phishing and 2,074 benign emails: 97.7% precision and 59.5% recall on a held-out test split.</p>
+        </div></div>
           </div>
-        </div>
-        <h3>AI Agent — LLM Output Capture Tool</h3>
-        <p class="project-desc">An AI-powered agent to capture, store, and organise outputs from LLM interactions, integrating prompt engineering and REST API integration.</p>
-        <div class="tags">
-          <span class="tag">AI Agents</span>
-          <span class="tag">REST API</span>
-          <span class="tag">Prompt Engineering</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Built to systematically capture and structure outputs generated during LLM interactions, this tool integrates directly with REST APIs to persist responses for later analysis, auditing, or downstream automation — reducing the manual effort of tracking prompt/response pairs across sessions.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai security">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-        </div>
-        <h3>Prompt Injection Simulator</h3>
-        <p class="project-desc">An interactive educational simulator demonstrating six AI security attack types against a Claude-backed LLM, with toggleable defenses and session logging.</p>
-        <div class="tags">
-          <span class="tag">Prompt Injection</span>
-          <span class="tag">TF-IDF</span>
-          <span class="tag">Logistic Regression</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Covers Direct, RAG, and Agent attack categories against a Claude-backed LLM, with toggleable defence mechanisms and session logging. Implemented a detection layer using TF-IDF and Logistic Regression trained on the <strong>deepset/prompt-injections</strong> HuggingFace dataset, with a roadmap toward DistilBERT fine-tuning and SHAP explainability in subsequent phases.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai security">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-        </div>
-        <h3>Pretexting Script Generator &amp; Red-Team Evaluator</h3>
-        <p class="project-desc">A security training tool using a dual-LLM architecture: one model generates pretexting scripts, a second scores them as a red-team analyst.</p>
-        <div class="tags">
-          <span class="tag">Dual-LLM</span>
-          <span class="tag">Red-Team</span>
-          <span class="tag">Responsible AI</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>One model generates realistic pretexting scripts targeting corporate personas (IT helpdesk, HR, executives), while a second model acts as a red-team analyst, scoring each script on plausibility, psychological tactic, risk level, and detection likelihood. Outputs are scoped exclusively to security training scenarios through a responsible AI framework enforced at the system prompt level.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai automation">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/AI-Scorecard-for-Governance-Risk-and-Compliance" target="_blank" rel="noopener" aria-label="View AI Scorecard for GRC on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
-        </div>
-        <h3>AI Scorecard for Governance, Risk &amp; Compliance</h3>
-        <p class="project-desc">An application helping procurement teams, compliance officers, and risk managers assess whether an AI system aligns with governance standards before deployment.</p>
-        <div class="tags">
+          <!-- build:gallery:phishing-agent -->
+          <figure class="project-gallery" data-gallery="phishing-agent" aria-label="Phishing Investigation Agent screenshots">
+            <div class="preview-toolbar"><span class="preview-dot" aria-hidden="true"></span><span>Phishing Investigation Agent</span><span class="preview-kind">Product output</span></div>
+            <button class="screenshot-open" type="button" aria-label="Enlarge Phishing Investigation Agent screenshot">
+              <img src="assets/projects/phishing-terminal.png" alt="Terminal investigation showing a phishing verdict, deterministic findings, and verification warnings." width="1192" height="1039" loading="eager" decoding="async">
+              <span class="screenshot-hint">View full size <span aria-hidden="true">↗</span></span>
+            </button>
+            <div class="gallery-controls" role="group" aria-label="Choose Phishing Investigation Agent screenshot">
+              <button type="button" class="gallery-select" aria-pressed="true">Investigation</button>
+              <button type="button" class="gallery-select" aria-pressed="false">Analyst report</button>
+            </div>
+            <figcaption>Email evidence, explainable findings, and warnings when model claims are unsupported.</figcaption>
+          </figure>
+          <!-- /build:gallery:phishing-agent -->
+        </article>
+        <article class="project-card featured-project reveal" id="ai-scorecard" data-tags="ai automation">
+          <!-- build:gallery:ai-scorecard -->
+          <figure class="project-gallery" data-gallery="ai-scorecard" aria-label="AI Procurement Scorecard screenshots">
+            <div class="preview-toolbar"><span class="preview-dot" aria-hidden="true"></span><span>AI Procurement Scorecard</span><span class="preview-kind">Product output</span></div>
+            <button class="screenshot-open" type="button" aria-label="Enlarge AI Procurement Scorecard screenshot">
+              <img src="assets/projects/scorecard-overview.png" alt="AI Procurement Scorecard landing page with a guided evaluation and example readiness score." width="3006" height="1642" loading="lazy" decoding="async">
+              <span class="screenshot-hint">View full size <span aria-hidden="true">↗</span></span>
+            </button>
+            <div class="gallery-controls" role="group" aria-label="Choose AI Procurement Scorecard screenshot">
+              <button type="button" class="gallery-select" aria-pressed="true">Overview</button>
+              <button type="button" class="gallery-select" aria-pressed="false">Assessment</button>
+              <button type="button" class="gallery-select" aria-pressed="false">Category scores</button>
+              <button type="button" class="gallery-select" aria-pressed="false">Answer breakdown</button>
+            </div>
+            <figcaption>A guided workflow for evaluating AI procurement readiness.</figcaption>
+          </figure>
+          <!-- /build:gallery:ai-scorecard -->
+          <div class="featured-body">
+            <div class="project-identity"><span class="project-icon project-icon--violet" aria-hidden="true"><img src="assets/projects/icons/scorecard.png" width="28" height="28" alt=""></span><div class="project-kicker">02 / AI Governance</div></div>
+            <h3>AI Procurement Scorecard</h3>
+            <p class="project-desc">A guided assessment that helps buyers evaluate AI systems, review evidence, and identify governance gaps before procurement.</p>
+            <div class="project-capability">Risk classification <span aria-hidden="true">/</span> Evidence review <span aria-hidden="true">/</span> Readiness scoring</div>
+            <div class="tags">
           <span class="tag">Responsible AI</span>
           <span class="tag">GRC</span>
           <span class="tag">Python</span>
         </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
+            <div class="project-actions"><a class="project-code-link" href="https://github.com/JRBaiao/AI-Scorecard-for-Governance-Risk-and-Compliance" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a><button class="project-toggle" type="button" aria-expanded="false" aria-controls="scorecard-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="scorecard-detail">
           <p>Grew out of my final-year consultancy project on enterprise adoption of Microsoft's responsible AI governance tools — a scorecard that lets SMEs and auditors evaluate AI systems against governance and procurement criteria before they go live.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai security">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/><circle cx="18" cy="6" r="4" fill="var(--bg)" stroke="var(--accent-red)"/><path d="M16.5 6h3M18 4.5v3" stroke="var(--accent-red)"/></svg>
+        </div></div>
           </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/Email-Spam-Detection" target="_blank" rel="noopener" aria-label="View Email Spam Detection on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
+        </article>
+        <article class="project-card featured-project reveal" id="prompt-injection" data-tags="ai security">
+          <!-- build:gallery:prompt-injection -->
+          <figure class="project-gallery" data-gallery="prompt-injection" aria-label="Prompt Injection Simulator screenshot">
+            <div class="preview-toolbar"><span class="preview-dot" aria-hidden="true"></span><span>Prompt Injection Simulator</span><span class="preview-kind">Product output</span></div>
+            <button class="screenshot-open" type="button" aria-label="Enlarge Prompt Injection Simulator screenshot">
+              <img src="assets/projects/prompt-injection-simulator.png" alt="Prompt Injection Simulator showing six attack scenarios and a defended role-hijack attempt with the model response." width="2992" height="1472" loading="lazy" decoding="async">
+              <span class="screenshot-hint">View full size <span aria-hidden="true">↗</span></span>
+            </button>
+            <figcaption>A role-hijack attempt marked as defended, with the model response available for inspection.</figcaption>
+          </figure>
+          <!-- /build:gallery:prompt-injection -->
+          <div class="featured-body">
+            <div class="project-identity"><span class="project-icon project-icon--coral" aria-hidden="true"><img src="assets/projects/icons/injection.png" width="28" height="28" alt=""></span><div class="project-kicker">03 / Adversarial AI</div></div>
+            <h3>Prompt Injection Simulator</h3>
+            <p class="project-desc">Explore six AI attack types against a Claude-backed LLM, compare defenses, and inspect the interaction logs.</p>
+            <div class="project-capability">6 attack types <span aria-hidden="true">/</span> Toggleable defenses <span aria-hidden="true">/</span> Session logging</div>
+            <div class="tags">
+          <span class="tag">Prompt Injection</span>
+          <span class="tag">TF-IDF</span>
+          <span class="tag">Logistic Regression</span>
         </div>
-        <h3>Email Spam Detection</h3>
-        <p class="project-desc">A machine-learning spam detection system using NLP and a Random Forest classifier to accurately identify spam emails.</p>
-        <div class="tags">
-          <span class="tag">NLP</span>
-          <span class="tag">Random Forest</span>
-          <span class="tag">Python</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Preprocesses raw email text with NLP techniques (tokenization, vectorization) and trains a Random Forest classifier to separate spam from legitimate messages, evaluated on classification accuracy and precision/recall.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai security">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+            <div class="project-actions"><button class="project-toggle" type="button" aria-expanded="false" aria-controls="injection-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="injection-detail">
+          <p>Covers Direct, RAG, and Agent attack categories against a Claude-backed LLM, with toggleable defence mechanisms and session logging. Implemented a detection layer using TF-IDF and Logistic Regression trained on the <strong>deepset/prompt-injections</strong> HuggingFace dataset, with a roadmap toward DistilBERT fine-tuning and SHAP explainability in subsequent phases.</p>
+        </div></div>
           </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/Real-Time-IDS" target="_blank" rel="noopener" aria-label="View Real-Time IDS on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
-        </div>
-        <h3>Real-Time Intrusion Detection System</h3>
-        <p class="project-desc">Monitors network traffic in real time and uses anomaly-detection machine learning to flag suspicious activity and raise alerts.</p>
-        <div class="tags">
-          <span class="tag">Anomaly Detection</span>
-          <span class="tag">Network Security</span>
-          <span class="tag">Python</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Analyzes network packets as they arrive, applying anomaly-detection algorithms to distinguish normal traffic patterns from behavior indicative of a potential cyber-attack, and surfaces alerts in real time.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai vision">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v-1a2 2 0 0 0-2-2 2 2 0 0 0-2 2v1a2 2 0 0 0-2-2 2 2 0 0 0-2 2v6c0 4 2 7 6 7h1c4 0 6-3 6-6v-3a2 2 0 0 0-2-2 2 2 0 0 0-2 2"/></svg>
+        </article>
+      </div>
+    </div>
+    <div class="project-group archive-group" data-project-group>
+      <div class="work-section-head"><h2>More projects</h2><span>Experiments, tools &amp; foundations</span></div>
+      <div class="project-grid archive-grid">
+        <!-- build:archive -->
+        <article class="project-card archive-project reveal" id="llm-capture" data-tags="ai automation">
+          <div class="project-top">
+            <span class="project-icon project-icon--cyan" aria-hidden="true"><img src="assets/projects/icons/capture.png" width="28" height="28" alt=""></span>
           </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/Hand-Gesture-Recognition" target="_blank" rel="noopener" aria-label="View Hand Gesture Recognition on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
-        </div>
-        <h3>Hand Gesture Recognition</h3>
-        <p class="project-desc">A computer vision system that processes hand landmarks in real time and recognizes custom gestures.</p>
-        <div class="tags">
-          <span class="tag">Computer Vision</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">Python</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Tracks hand landmarks from webcam input and matches them against predefined gesture models, enabling gesture-based interaction without any physical controller.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="ai vision security">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4M15 3h4a2 2 0 0 1 2 2v4M9 21H5a2 2 0 0 1-2-2v-4M15 21h4a2 2 0 0 0 2-2v-4"/><circle cx="12" cy="12" r="3"/></svg>
+          <h3>AI Agent — LLM Output Capture Tool</h3>
+          <p class="project-desc">An AI-powered agent to capture, store, and organise outputs from LLM interactions, integrating prompt engineering and REST API integration.</p>
+          <div class="tags">
+            <span class="tag">AI Agents</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Prompt Engineering</span>
           </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/Facial-Detection-System-" target="_blank" rel="noopener" aria-label="View Facial Detection System on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
-        </div>
-        <h3>Facial Detection System</h3>
-        <p class="project-desc">A real-time facial detection application built with Python and OpenCV that detects and highlights human faces via webcam or image input.</p>
-        <div class="tags">
-          <span class="tag">Computer Vision</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">Python</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Uses OpenCV's detection pipeline to locate and highlight faces in a live webcam feed or static images, serving as a foundation for further face-recognition or access-control work.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="data">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="llm-capture-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="llm-capture-detail">
+            <p>Built to systematically capture and structure outputs generated during LLM interactions, this tool integrates directly with REST APIs to persist responses for later analysis, auditing, or downstream automation — reducing the manual effort of tracking prompt/response pairs across sessions.</p>
           </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/Database-Management-Project" target="_blank" rel="noopener" aria-label="View Database Management Project on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
-        </div>
-        <h3>Database Management Project</h3>
-        <p class="project-desc">A relational database design built for a Brazilian e-commerce company, modeled from its historical order and customer datasets.</p>
-        <div class="tags">
-          <span class="tag">Database Design</span>
-          <span class="tag">SQL</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>Designed the schema, relationships, and normalization for an e-commerce dataset — covering orders, customers, products, and payments — as part of a database management module.</p>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-tags="app">
-        <div class="project-top">
-          <div class="project-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </article>
+        <article class="project-card archive-project reveal" id="pretexting-generator" data-tags="ai security">
+          <div class="project-top">
+            <span class="project-icon project-icon--amber" aria-hidden="true"><img src="assets/projects/icons/pretexting.png" width="28" height="28" alt=""></span>
           </div>
-          <a class="project-link-btn" href="https://github.com/JRBaiao/Currency-Converter" target="_blank" rel="noopener" aria-label="View Currency Converter on GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-          </a>
-        </div>
-        <h3>Currency Converter</h3>
-        <p class="project-desc">A currency conversion app — my first project built in Java, applying core object-oriented programming fundamentals.</p>
-        <div class="tags">
-          <span class="tag">Java</span>
-          <span class="tag">OOP</span>
-        </div>
-        <button class="project-toggle">
-          Details
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="project-detail">
-          <p>An early learning project converting between currencies using live or fixed exchange rates — built to practice Java fundamentals: classes, methods, and basic I/O.</p>
-        </div>
-      </article>
+          <h3>Pretexting Script Generator &amp; Red-Team Evaluator</h3>
+          <p class="project-desc">A security training tool using a dual-LLM architecture: one model generates pretexting scripts, a second scores them as a red-team analyst.</p>
+          <div class="tags">
+            <span class="tag">Dual-LLM</span>
+            <span class="tag">Red-Team</span>
+            <span class="tag">Responsible AI</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="pretexting-generator-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="pretexting-generator-detail">
+            <p>One model generates realistic pretexting scripts targeting corporate personas (IT helpdesk, HR, executives), while a second model acts as a red-team analyst, scoring each script on plausibility, psychological tactic, risk level, and detection likelihood. Outputs are scoped exclusively to security training scenarios through a responsible AI framework enforced at the system prompt level.</p>
+          </div>
+        </article>
+        <article class="project-card archive-project reveal" id="spam-detection" data-tags="ai security">
+          <div class="project-top">
+            <span class="project-icon project-icon--amber" aria-hidden="true"><img src="assets/projects/icons/spam.png" width="28" height="28" alt=""></span>
+            <a class="project-code-link" href="https://github.com/JRBaiao/Email-Spam-Detection" target="_blank" rel="noopener" aria-label="View Email Spam Detection on GitHub">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <h3>Email Spam Detection</h3>
+          <p class="project-desc">A machine-learning spam detection system using NLP and a Random Forest classifier to accurately identify spam emails.</p>
+          <div class="tags">
+            <span class="tag">NLP</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">Python</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="spam-detection-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="spam-detection-detail">
+            <p>Preprocesses raw email text with NLP techniques (tokenization, vectorization) and trains a Random Forest classifier to separate spam from legitimate messages, evaluated on classification accuracy and precision/recall.</p>
+          </div>
+        </article>
+        <article class="project-card archive-project reveal" id="intrusion-detection" data-tags="ai security">
+          <div class="project-top">
+            <span class="project-icon project-icon--green" aria-hidden="true"><img src="assets/projects/icons/intrusion.png" width="28" height="28" alt=""></span>
+            <a class="project-code-link" href="https://github.com/JRBaiao/Real-Time-IDS" target="_blank" rel="noopener" aria-label="View Real-Time Intrusion Detection System on GitHub">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <h3>Real-Time Intrusion Detection System</h3>
+          <p class="project-desc">Monitors network traffic in real time and uses anomaly-detection machine learning to flag suspicious activity and raise alerts.</p>
+          <div class="tags">
+            <span class="tag">Anomaly Detection</span>
+            <span class="tag">Network Security</span>
+            <span class="tag">Python</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="intrusion-detection-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="intrusion-detection-detail">
+            <p>Analyzes network packets as they arrive, applying anomaly-detection algorithms to distinguish normal traffic patterns from behavior indicative of a potential cyber-attack, and surfaces alerts in real time.</p>
+          </div>
+        </article>
+        <article class="project-card archive-project reveal" id="gesture-recognition" data-tags="ai vision">
+          <div class="project-top">
+            <span class="project-icon project-icon--violet" aria-hidden="true"><img src="assets/projects/icons/gesture.png" width="28" height="28" alt=""></span>
+            <a class="project-code-link" href="https://github.com/JRBaiao/Hand-Gesture-Recognition" target="_blank" rel="noopener" aria-label="View Hand Gesture Recognition on GitHub">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <h3>Hand Gesture Recognition</h3>
+          <p class="project-desc">A computer vision system that processes hand landmarks in real time and recognizes custom gestures.</p>
+          <div class="tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Python</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="gesture-recognition-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="gesture-recognition-detail">
+            <p>Tracks hand landmarks from webcam input and matches them against predefined gesture models, enabling gesture-based interaction without any physical controller.</p>
+          </div>
+        </article>
+        <article class="project-card archive-project reveal" id="facial-detection" data-tags="ai vision security">
+          <div class="project-top">
+            <span class="project-icon project-icon--cyan" aria-hidden="true"><img src="assets/projects/icons/face.png" width="28" height="28" alt=""></span>
+            <a class="project-code-link" href="https://github.com/JRBaiao/Facial-Detection-System-" target="_blank" rel="noopener" aria-label="View Facial Detection System on GitHub">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <h3>Facial Detection System</h3>
+          <p class="project-desc">A real-time facial detection application built with Python and OpenCV that detects and highlights human faces via webcam or image input.</p>
+          <div class="tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Python</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="facial-detection-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="facial-detection-detail">
+            <p>Uses OpenCV's detection pipeline to locate and highlight faces in a live webcam feed or static images, serving as a foundation for further face-recognition or access-control work.</p>
+          </div>
+        </article>
+        <article class="project-card archive-project reveal" id="database-project" data-tags="data">
+          <div class="project-top">
+            <span class="project-icon project-icon--violet" aria-hidden="true"><img src="assets/projects/icons/database.png" width="28" height="28" alt=""></span>
+            <a class="project-code-link" href="https://github.com/JRBaiao/Database-Management-Project" target="_blank" rel="noopener" aria-label="View Database Management Project on GitHub">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <h3>Database Management Project</h3>
+          <p class="project-desc">A relational database design built for a Brazilian e-commerce company, modeled from its historical order and customer datasets.</p>
+          <div class="tags">
+            <span class="tag">Database Design</span>
+            <span class="tag">SQL</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="database-project-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="database-project-detail">
+            <p>Designed the schema, relationships, and normalization for an e-commerce dataset — covering orders, customers, products, and payments — as part of a database management module.</p>
+          </div>
+        </article>
+        <article class="project-card archive-project reveal" id="currency-converter" data-tags="app">
+          <div class="project-top">
+            <span class="project-icon project-icon--green" aria-hidden="true"><img src="assets/projects/icons/currency.png" width="28" height="28" alt=""></span>
+            <a class="project-code-link" href="https://github.com/JRBaiao/Currency-Converter" target="_blank" rel="noopener" aria-label="View Currency Converter on GitHub">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <h3>Currency Converter</h3>
+          <p class="project-desc">A currency conversion app — my first project built in Java, applying core object-oriented programming fundamentals.</p>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">OOP</span>
+          </div>
+          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="currency-converter-detail">Technical details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="project-detail" id="currency-converter-detail">
+            <p>An early learning project converting between currencies using live or fixed exchange rates — built to practice Java fundamentals: classes, methods, and basic I/O.</p>
+          </div>
+        </article>
+        <!-- /build:archive -->
+      </div>
     </div>
   </div>
 </section>
@@ -312,6 +310,12 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 <div class="toast"></div>
+
+<dialog class="screenshot-dialog" aria-labelledby="screenshot-dialog-title">
+  <div class="screenshot-dialog-bar"><h2 id="screenshot-dialog-title">Project screenshot</h2><div class="screenshot-dialog-actions"><button type="button" class="screenshot-zoom" aria-pressed="false">Zoom in</button><button type="button" class="screenshot-close" aria-label="Close screenshot">Close <span aria-hidden="true">×</span></button></div></div>
+  <div class="screenshot-dialog-image"><img alt=""></div>
+  <p class="screenshot-dialog-caption"></p>
+</dialog>
 
 <script src="js/script.js"></script>
 </body>

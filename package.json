@@ -1,0 +1,17 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  },
+  "scripts": {
+    "build": "npm run typecheck && npm run build:pages && npm run build:js",
+    "typecheck": "tsc && tsc -p scripts",
+    "build:pages": "node scripts/build-pages.ts",
+    "build:js": "esbuild src/main.ts --bundle --format=iife --target=es2022 --outfile=js/script.js \"--banner:js=// Built from src/ by npm run build:js. Edit the TypeScript sources, not this file.\"",
+    "watch": "npm run build:js -- --watch"
+  }
+}

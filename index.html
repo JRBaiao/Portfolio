@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action mailto:; base-uri 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>João Baião — AI &amp; Cybersecurity Portfolio</title>
 <meta name="description" content="Portfolio of João Rafael Avansini Baião — AI &amp; Cybersecurity student, former Solutions Engineer intern at Microsoft.">
@@ -28,10 +29,10 @@
 </nav>
 
 <header class="hero-header">
+  <canvas class="hero-smoke" aria-hidden="true"></canvas>
   <div class="container hero">
     <div class="hero-copy">
       <h1 class="hero-title">João Rafael<br>Avansini <span class="text-gradient">Baião</span></h1>
-      <p class="hero-lede">AI &amp; Cybersecurity student building at the intersection of applied machine learning and blue-team defense — most recently a Solutions Engineer intern at Microsoft, working on AI agents and enterprise Copilot adoption.</p>
       <div class="hero-meta">
         <span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -90,41 +91,24 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section home-work" aria-labelledby="selected-projects-heading">
   <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">Featured work</div>
-      <h2>Selected projects</h2>
-      <p>A sample of AI security tooling I've designed and built — see the full list with details.</p>
-    </div>
-    <div class="card-grid">
-      <div class="card reveal">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
-        </div>
-        <h3>LLM Output Capture Agent</h3>
-        <p>AI-powered agent to capture, store, and organise outputs from LLM interactions via REST API integration.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h3>Prompt Injection Simulator</h3>
-        <p>Interactive simulator demonstrating six AI attack types with a TF-IDF + Logistic Regression detection layer.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Pretexting Red-Team Evaluator</h3>
-        <p>Dual-LLM architecture generating and scoring pretexting scripts for corporate security-awareness training.</p>
-      </div>
-    </div>
-    <div class="btn-row" style="margin-top:40px;">
-      <a href="projects.html" class="btn btn-outline">See all projects
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="section-head reveal"><div class="eyebrow">Featured work</div><h2 id="selected-projects-heading">Selected projects</h2><p>Security tooling and AI governance, from the investigation output to the assessment dashboard.</p></div>
+    <div class="work-preview-grid">
+      <a href="projects.html#phishing-agent" class="work-preview work-preview--lead reveal">
+        <div class="work-preview-copy"><div class="project-identity"><span class="project-icon project-icon--cyan" aria-hidden="true"><img src="assets/projects/icons/phishing.png" width="28" height="28" alt=""></span><div class="project-kicker">01 / AI &amp; Blue-Team Security</div></div><h3>Phishing Investigation Agent</h3><p>Local-first email triage with explainable scoring and a verifier that checks the model’s claims.</p><div class="preview-result"><strong data-count-up>97.7%</strong> precision <span aria-hidden="true">·</span> <strong data-count-up>59.5%</strong> recall</div><p class="results-note">Held-out test results</p><span class="work-preview-link">Explore project <span aria-hidden="true">↗</span></span></div>
+        <div class="work-preview-image"><img src="assets/projects/phishing-terminal.png" width="1192" height="1039" alt="Phishing investigation output with evidence and verification warnings." loading="lazy" decoding="async"></div>
+      </a>
+      <a href="projects.html#ai-scorecard" class="work-preview reveal">
+        <div class="work-preview-image"><img src="assets/projects/scorecard-overview.png" width="3006" height="1642" alt="AI Procurement Scorecard interface with an example assessment." loading="lazy" decoding="async"></div>
+        <div class="work-preview-copy"><div class="project-identity"><span class="project-icon project-icon--violet" aria-hidden="true"><img src="assets/projects/icons/scorecard.png" width="28" height="28" alt=""></span><div class="project-kicker">02 / AI Governance</div></div><h3>AI Procurement Scorecard</h3><p>Evidence review, risk classification, and readiness scoring for AI procurement.</p><span class="work-preview-link">Explore project <span aria-hidden="true">↗</span></span></div>
+      </a>
+      <a href="projects.html#prompt-injection" class="work-preview reveal">
+        <div class="work-preview-image"><img src="assets/projects/prompt-injection-simulator.png" width="2992" height="1472" alt="Prompt Injection Simulator interface showing a defended role-hijack attempt and the model response." loading="lazy" decoding="async"></div>
+        <div class="work-preview-copy"><div class="project-identity"><span class="project-icon project-icon--coral" aria-hidden="true"><img src="assets/projects/icons/injection.png" width="28" height="28" alt=""></span><div class="project-kicker">03 / Adversarial AI</div></div><h3>Prompt Injection Simulator</h3><p>Six AI attack types, toggleable defenses, and a machine-learning detection layer.</p><span class="work-preview-link">Explore project <span aria-hidden="true">↗</span></span></div>
       </a>
     </div>
+    <div class="btn-row btn-row--spaced"><a href="projects.html" class="btn btn-outline">See all <!-- build:count -->11<!-- /build:count --> projects <span aria-hidden="true">→</span></a></div>
   </div>
 </section>
 

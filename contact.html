@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action mailto:; base-uri 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — João Baião</title>
 <meta name="description" content="Get in touch with João Rafael Avansini Baião.">
@@ -47,8 +48,8 @@
           </div>
           <div>
             <h4>Email</h4>
-            <a href="mailto:joaorafaelavancinibaiao4@gmail.com">joaorafaelavancinibaiao4@gmail.com</a><br>
-            <a href="#" class="copy-email" data-email="joaorafaelavancinibaiao4@gmail.com" style="font-size:0.78rem; color: var(--text-faint);">copy to clipboard</a>
+            <a href="mailto:joaorafaelavancinibaiao4@gmail.com">joaorafaelavancinibaiao4<wbr>@gmail.com</a><br>
+            <a href="#" class="copy-email" data-email="joaorafaelavancinibaiao4@gmail.com">copy to clipboard</a>
           </div>
         </div>
         <div class="contact-item">
@@ -57,7 +58,7 @@
           </div>
           <div>
             <h4>LinkedIn</h4>
-            <a href="https://www.linkedin.com/in/joaorafaelabaiao" target="_blank" rel="noopener">linkedin.com/in/joaorafaelabaiao</a>
+            <a href="https://www.linkedin.com/in/joaorafaelabaiao" target="_blank" rel="noopener">linkedin.com/in/<wbr>joaorafaelabaiao</a>
           </div>
         </div>
         <div class="contact-item">
@@ -91,7 +92,7 @@
 
       <div class="form-card reveal">
         <div class="eyebrow">Write a message</div>
-        <form id="contact-form">
+        <form id="contact-form" action="mailto:joaorafaelavancinibaiao4@gmail.com" method="post" enctype="text/plain">
           <div class="form-row">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
