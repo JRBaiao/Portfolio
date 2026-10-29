@@ -287,10 +287,16 @@ input, textarea { font-family: inherit; }
 }
 .hero-smoke.is-ready { opacity: 0.7; }
 @media (max-width: 900px) {
-  /* Stacked layout: the terminal sits below the title, so centre the smoke lower down */
+  /* Stacked layout: smoke across the whole hero, clear behind the title at the top and
+     fading out at the bottom edge; the terminal turns to frosted glass so it shows through. */
   .hero-smoke {
-    -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 72%, #000 15%, transparent 80%);
-    mask-image: radial-gradient(ellipse 90% 60% at 50% 72%, #000 15%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 8%, #000 34%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 8%, #000 34%, #000 82%, transparent 100%);
+  }
+  .hero-header .terminal {
+    background: rgb(6 6 6 / 0.72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 }
 .hero {

@@ -128,6 +128,7 @@ for (const [page, html] of pages) {
   if (/<script(?![^>]*\ssrc=)[^>]*>/.test(html)) errors.push(`${page}: inline <script> (blocked by the CSP; put it in src/)`);
   if (/\son[a-z]+="/.test(html)) errors.push(`${page}: inline event handler (blocked by the CSP; use addEventListener)`);
   if (/\s(?:src|href)="http:\/\//.test(html)) errors.push(`${page}: insecure http:// link`);
+  if (!html.includes('href="assets/icons/favicon.svg"')) errors.push(`${page}: missing the favicon <link> tags`);
 
   for (const ref of captures(html, /\s(?:src|href)="([^"]+)"/g)) {
     if (/^(?:[a-z][a-z+.-]*:|#|\/\/)/i.test(ref)) continue;

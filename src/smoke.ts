@@ -42,7 +42,8 @@ float fbm(vec2 p) {
 }
 
 void main() {
-  vec2 uv = gl_FragCoord.xy / uResolution.y * 1.6;
+  // Scale by the shorter side, so the wisps keep the same size on a tall, narrow phone hero.
+  vec2 uv = gl_FragCoord.xy / min(uResolution.x, uResolution.y) * 1.6;
   float t = uTime * 0.035;
   uv.y -= t * 1.4; // the whole field rises slowly
 
